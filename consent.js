@@ -36,8 +36,9 @@ async function continuar() {
 
     try {
 
-        const response = await fetch(API_URL + "?action=registerConsent", {
+        const response = await fetch(API_URL, {
             method: "POST",
+            mode: "cors",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload)
         });
