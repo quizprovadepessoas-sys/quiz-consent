@@ -1,24 +1,23 @@
-// === LINK DO NOVO DEPLOY DO APPS SCRIPT ===
-const API_URL = "https://script.google.com/macros/s/AKfycbw0DnA_M_wQIrxf4XkeLZLD7OIivyGoG1SkwHFiWg6xJBxRWjH1Te8lbOgY0_4VUNkbig/exec";
-
 document.addEventListener("DOMContentLoaded", () => {
 
     const termsBox = document.getElementById("termsBox");
     const agree = document.getElementById("agree");
     const btn = document.getElementById("btn");
 
+    // Só libera o checkbox quando a pessoa rolar tudo
     termsBox.addEventListener("scroll", () => {
         const atBottom = termsBox.scrollTop + termsBox.clientHeight >= termsBox.scrollHeight - 10;
         if (atBottom) agree.disabled = false;
     });
 
+    // Só libera o botão quando marcar "concordo"
     agree.addEventListener("change", () => {
         btn.disabled = !agree.checked;
     });
 });
 
-// === ENVIAR CONSENTIMENTO ===
-async function continuar() {
+// === IR PARA O QUIZ SEM QUALQUER ENVIO ===
+function continuar() {
 
     const user = JSON.parse(sessionStorage.getItem("quiz_user") || "{}");
 
@@ -27,43 +26,9 @@ async function continuar() {
         return;
     }
 
-    const payload = {
-        action: "registerConsent",
-        name: user.name,
-        email: user.email,
-        phone: user.phone || "",
-        department: user.department || "GERAL",
-        consentText: "Usuário aceitou o termo de consentimento LGPD."
-    };
+    // apenas salva localmente que aceitou o termo (se quiser)
+    sessionStorage.setItem("quiz_consent", "true");
 
-    try {
-        const response = await fetch(API_URL, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(payload)
-        });
-
-        const result = await response.json();
-
-        // Apps Script 2025 retorna { headers: {}, body: "..." }
-        let json = result;
-
-        // Caso venha no formato body/json
-        if (result.body) {
-            json = JSON.parse(result.body);
-        }
-
-        if (json.success) {
-            window.location.href = "quiz.html";
-        } else {
-            alert("Erro ao registrar consentimento.");
-            console.error("ERRO APPS SCRIPT:", json);
-        }
-
-    } catch (err) {
-        alert("Erro ao registrar consentimento (CORS ou conexão).");
-        console.error("ERRO NO FETCH:", err);
-    }
+    // redireciona SEM CONTATO COM SERVIDOR
+    window.location.href = "quiz.html";
 }
