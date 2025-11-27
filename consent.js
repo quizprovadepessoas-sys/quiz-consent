@@ -1,5 +1,5 @@
 // === LINK DO NOVO DEPLOY DO APPS SCRIPT ===
-const API_URL = "https://script.google.com/macros/s/AKfycbzsyMZELo6lzko2ljCmOtQD2_58VHeunIRmPEWr80xJ7R6akSFgqTJIMqyQJAsEbm0Z3g/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycby1zwirkKbsjp1kKJccmrWxZVxGJ7Tb2StPsAz0746NicP9ES6AvpLKpSCxFfi-Agv3yA/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -32,7 +32,7 @@ async function continuar() {
     }
 
     const payload = {
-        action: "registerConsent", // AÇÃO CORRETA
+        action: "registerConsent",
         name: user.name,
         email: user.email,
         phone: user.phone || "",
@@ -43,7 +43,7 @@ async function continuar() {
     try {
         const response = await fetch(API_URL, {
             method: "POST",
-            mode: "cors",  // IMPORTANTE para GitHub Pages
+            mode: "cors",
             headers: {
                 "Content-Type": "application/json"
             },
@@ -58,7 +58,6 @@ async function continuar() {
 
         const result = await response.json();
 
-        // VERIFICA retorno padrão do Apps Script
         if (result.success === true) {
             window.location.href = "quiz.html";
         } else {
