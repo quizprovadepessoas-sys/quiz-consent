@@ -1,5 +1,5 @@
 // === LINK DO NOVO DEPLOY DO APPS SCRIPT ===
-const API_URL = "https://script.google.com/macros/s/AKfycby2Ch05bByjqq9aD4rcjVQWZBYVqJPqyARX_LJ4nTTQH2wk-k-QRQOOqHvS5jGAkG3yWw/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbxGrFCnp_Eskwu_shPe-kuUSP5mCKO2PZq1ilOp9muWuJBmyfoY-A4uY_FKyTSsVxaIEg/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
 
