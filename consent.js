@@ -17,8 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-
-// === ENVIAR CONSENTIMENTO ===
+// === ENVIAR CONSENTIMENTO COM CORS OK ===
 async function continuar() {
 
     const user = JSON.parse(sessionStorage.getItem("quiz_user") || "{}");
@@ -40,9 +39,18 @@ async function continuar() {
     try {
         const response = await fetch(API_URL, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
             body: JSON.stringify(payload)
         });
+
+        if (!response.ok) {
+            console.error("HTTP ERROR:", response.status, response.statusText);
+            throw new Error("Falha no servidor");
+        }
 
         const result = await response.json();
 
@@ -50,12 +58,11 @@ async function continuar() {
             window.location.href = "quiz.html";
         } else {
             alert("Erro ao registrar consentimento.");
-            console.error(result);
+            console.error("ERRO APPS SCRIPT:", result);
         }
 
     } catch (err) {
-        alert("Erro ao registrar consentimento (falha de conexão).");
-        console.error(err);
+        alert("Erro ao registrar consentimento (CORS ou conexão).");
+        console.error("ERRO NO FETCH:", err);
     }
 }
-
