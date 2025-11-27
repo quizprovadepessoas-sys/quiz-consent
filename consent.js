@@ -1,5 +1,5 @@
 // === LINK DO NOVO DEPLOY DO APPS SCRIPT ===
-const API_URL = "https://script.google.com/macros/s/AKfycby1zwirkKbsjp1kKJccmrWxZVxGJ7Tb2StPsAz0746NicP9ES6AvpLKpSCxFfi-Agv3yA/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbxrpcdypjHrNpiseLKRJ9l9368wvP6qR3SLUwqieEcpykQVz42ZSWSm2-wUckKWMklO5g/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const agree = document.getElementById("agree");
     const btn = document.getElementById("btn");
 
-    // Libera checkbox apenas após scroll completo
+    // Libera checkbox após scroll completo
     termsBox.addEventListener("scroll", () => {
         const atBottom = termsBox.scrollTop + termsBox.clientHeight >= termsBox.scrollHeight - 10;
         if (atBottom) agree.disabled = false;
@@ -20,12 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// === FUNÇÃO PRINCIPAL ===
+// === ENVIAR CONSENTIMENTO ===
 async function continuar() {
 
     const user = JSON.parse(sessionStorage.getItem("quiz_user") || "{}");
 
-    // Validação de segurança
     if (!user.name || !user.email) {
         alert("Erro: dados do usuário não foram encontrados.");
         return;
@@ -43,30 +42,21 @@ async function continuar() {
     try {
         const response = await fetch(API_URL, {
             method: "POST",
-            mode: "cors",
-            headers: {
-                "Content-Type": "application/json"
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload)
         });
 
-        if (!response.ok) {
-            console.error("HTTP ERRO:", response.status, response.statusText);
-            alert("Erro ao enviar dados para o servidor.");
-            return;
-        }
-
         const result = await response.json();
 
-        if (result.success === true) {
+        if (result.success) {
             window.location.href = "quiz.html";
         } else {
             alert("Erro ao registrar consentimento.");
-            console.error("Resposta do servidor:", result);
+            console.error(result);
         }
 
-    } catch (error) {
+    } catch (err) {
         alert("Erro ao registrar consentimento (falha de conexão).");
-        console.error("Erro no fetch:", error);
+        console.error(err);
     }
 }
