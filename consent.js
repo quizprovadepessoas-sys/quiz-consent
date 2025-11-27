@@ -1,4 +1,5 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbxIyKscQzwvKoGdmMeYga1yCFN8SxxGV2cMvlz72VtM68mmtp7uQiYPqBiOW-vDA5BXdA/exec";
+// NOVO LINK DO SEU DEPLOY
+const API_URL = "https://script.google.com/macros/s/AKfycbxrt-fcNdn9NOdo4gol34cxFVuPo28p9hSyLL7VnihUTzO0_G6p6RULE83s_E76aUMDeA/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -26,7 +27,7 @@ async function continuar() {
     }
 
     const payload = {
-        action: "registerConsent",
+        action: "registerConsent",   // AGORA A AÇÃO VAI NO BODY (correto)
         name: user.name || "",
         email: user.email || "",
         phone: user.phone || "",
