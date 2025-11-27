@@ -1,5 +1,5 @@
 // === LINK DO NOVO DEPLOY DO APPS SCRIPT ===
-const API_URL = "https://script.google.com/macros/s/AKfycbxrpcdypjHrNpiseLKRJ9l9368wvP6qR3SLUwqieEcpykQVz42ZSWSm2-wUckKWMklO5g/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycby2Ch05bByjqq9aD4rcjVQWZBYVqJPqyARX_LJ4nTTQH2wk-k-QRQOOqHvS5jGAkG3yWw/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -7,13 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const agree = document.getElementById("agree");
     const btn = document.getElementById("btn");
 
-    // Libera checkbox após scroll completo
     termsBox.addEventListener("scroll", () => {
         const atBottom = termsBox.scrollTop + termsBox.clientHeight >= termsBox.scrollHeight - 10;
         if (atBottom) agree.disabled = false;
     });
 
-    // Libera botão após aceitar termo
     agree.addEventListener("change", () => {
         btn.disabled = !agree.checked;
     });
