@@ -1,5 +1,5 @@
 // === LINK DO NOVO DEPLOY DO APPS SCRIPT ===
-const API_URL = "https://script.google.com/macros/s/AKfycbxGrFCnp_Eskwu_shPe-kuUSP5mCKO2PZq1ilOp9muWuJBmyfoY-A4uY_FKyTSsVxaIEg/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbyMD7_W1Kw-r45GYMtpT3pZ_w-DrKfe7Jpsjh5CY4xjIB7STkeYOTYzFNtS54BQpQpJkA/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -39,10 +39,8 @@ async function continuar() {
     try {
         const response = await fetch(API_URL, {
             method: "POST",
-            mode: "cors",
             headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
+                "Content-Type": "application/json"
             },
             body: JSON.stringify(payload)
         });
