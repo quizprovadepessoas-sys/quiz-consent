@@ -1,5 +1,5 @@
 // === LINK DO NOVO DEPLOY DO APPS SCRIPT ===
-const API_URL = "https://script.google.com/macros/s/AKfycbyMD7_W1Kw-r45GYMtpT3pZ_w-DrKfe7Jpsjh5CY4xjIB7STkeYOTYzFNtS54BQpQpJkA/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbw0DnA_M_wQIrxf4XkeLZLD7OIivyGoG1SkwHFiWg6xJBxRWjH1Te8lbOgY0_4VUNkbig/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// === ENVIAR CONSENTIMENTO COM CORS OK ===
+// === ENVIAR CONSENTIMENTO ===
 async function continuar() {
 
     const user = JSON.parse(sessionStorage.getItem("quiz_user") || "{}");
@@ -45,18 +45,21 @@ async function continuar() {
             body: JSON.stringify(payload)
         });
 
-        if (!response.ok) {
-            console.error("HTTP ERROR:", response.status, response.statusText);
-            throw new Error("Falha no servidor");
-        }
-
         const result = await response.json();
 
-        if (result.success) {
+        // Apps Script 2025 retorna { headers: {}, body: "..." }
+        let json = result;
+
+        // Caso venha no formato body/json
+        if (result.body) {
+            json = JSON.parse(result.body);
+        }
+
+        if (json.success) {
             window.location.href = "quiz.html";
         } else {
             alert("Erro ao registrar consentimento.");
-            console.error("ERRO APPS SCRIPT:", result);
+            console.error("ERRO APPS SCRIPT:", json);
         }
 
     } catch (err) {
