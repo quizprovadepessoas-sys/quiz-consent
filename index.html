@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Identificação</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="bg-overlay"></div>
+
+    <div class="login-card">
+
+        <img src="img/logo.png" class="logo" alt="Logo">
+
+        <h2 class="title">Identificação</h2>
+
+        <input type="text" id="name" placeholder="Nome completo" class="input-field">
+
+        <input type="email" id="email" placeholder="E-mail" class="input-field">
+
+        <input type="text" id="phone" placeholder="Celular (somente números)"
+               maxlength="11" class="input-field"
+               oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+
+        <button id="continueBtn" class="btn" disabled>Continuar</button>
+
+        <a href="#" id="adminLink" class="admin-link">Entrar como Admin</a>
+
+    </div>
+
+    <!-- MODAL ADMIN -->
+    <div id="adminModal" class="modal hidden">
+        <div class="modal-content">
+
+            <h3 class="modal-title">Login Administrador</h3>
+
+            <input type="password" id="adminPass" class="input-field" placeholder="Senha">
+
+            <div class="modal-buttons">
+                <button id="adminCancel" class="btn-outline">Cancelar</button>
+                <button id="adminLoginBtn" class="btn">Entrar</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

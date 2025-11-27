@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termo de Consentimento</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="bg-overlay"></div>
+
+    <div class="installer-card">
+
+        <h2 class="title">Termo de Consentimento (LGPD)</h2>
+        <p class="subtitle">Leia atentamente os termos antes de continuar.</p>
+
+        <!-- ÁREA ROLÁVEL DE TEXTO -->
+        <div class="terms-box" id="termsBox">
+            <h3>Política de Privacidade e Tratamento de Dados</h3>
+            <p>
+                Este sistema coleta informações pessoais exclusivamente para fins de registro,
+                controle de tentativas, auditoria e análise de desempenho do quiz corporativo.
+                Nenhum dado é compartilhado com terceiros.
+            </p>
+
+            <p>
+                Os dados coletados incluem: nome, e-mail corporativo, telefone, respostas do quiz
+                e registros de consentimento. Os dados são armazenados com base na LGPD - Lei Geral
+                de Proteção de Dados (Lei 13.709/2018).
+            </p>
+
+            <p>
+                Ao aceitar, você concorda com:
+                <br>• Armazenamento seguro das suas informações
+                <br>• Uso dos dados exclusivamente para fins internos
+                <br>• Registro das tentativas de avaliação
+            </p>
+
+            <p>
+                Caso não concorde com os termos, você não poderá prosseguir.
+            </p>
+
+            <p>
+                Role até o final para habilitar o aceite.
+            </p>
+        </div>
+
+        <!-- CHECKBOX -->
+        <label class="checkbox-area">
+            <input type="checkbox" id="agree" disabled>
+            <span>Li e concordo com os termos acima</span>
+        </label>
+
+        <!-- BOTÃO -->
+        <button id="btn" class="btn" disabled onclick="continuar()">Continuar</button>
+
+    </div>
+
+    <script src="consent.js"></script>
+</body>
+</html>

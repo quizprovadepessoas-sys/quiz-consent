@@ -1,0 +1,248 @@
+/* ---- RESET ---- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; /* ❗ Remove qualquer scroll */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f5f5f5;
+    position: relative;
+}
+
+/* ---- FUNDO COM GRADIENTE ---- */
+.bg-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(125deg, #0056b3, #00a2ff, #003d73);
+    background-size: 200% 200%;
+    animation: gradientMove 8s ease infinite;
+    z-index: -1;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ---- CARTÃO CENTRAL ---- */
+.login-card {
+    width: 350px;
+    background: #ffffffdd;
+    backdrop-filter: blur(8px);
+    border-radius: 15px;
+    padding: 32px;
+    text-align: center;
+    box-shadow: 0 8px 30px #00000030;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.logo {
+    width: 120px;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* ---- INPUTS ---- */
+.input-field {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: 1px solid #bbb;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.input-field:focus {
+    border-color: #008cff;
+    box-shadow: 0 0 5px #008cff50;
+    outline: none;
+}
+
+/* ---- BOTÃO PRINCIPAL ---- */
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #0077ff;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+}
+
+.btn:hover:not(:disabled) {
+    background: #005fc4;
+}
+
+/* ---- LINK ADMIN ---- */
+.admin-link {
+    display: block;
+    margin-top: 12px;
+    font-size: 14px;
+    color: #003e91;
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+.admin-link:hover {
+    opacity: 1;
+}
+
+/* ---- MODAL ---- */
+.modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: #00000080;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: white;
+    padding: 25px;
+    width: 330px;
+    border-radius: 12px;
+    text-align: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-title {
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn-outline {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid #0077ff;
+    background: transparent;
+    color: #0077ff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-outline:hover {
+    background: #0077ff;
+    color: white;
+}
+
+/* --- ESTILO DO CARD TIPO INSTALADOR --- */
+
+.installer-card {
+    width: 520px;
+    background: #ffffffee;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px #00000030;
+    backdrop-filter: blur(6px);
+    animation: fadeIn 0.4s ease;
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 16px;
+}
+
+/* ÁREA ROLÁVEL */
+.terms-box {
+    height: 240px;
+    overflow-y: auto;
+    background: #f7f7f7;
+    padding: 18px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    text-align: left;
+    font-size: 14px;
+    line-height: 1.45;
+    margin-bottom: 18px;
+}
+
+.terms-box::-webkit-scrollbar {
+    width: 8px;
+}
+
+.terms-box::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.terms-box::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Checkbox e botão */
+.checkbox-area {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    background: #0a74da;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn:disabled {
+    background: #b5b5b5;
+    cursor: not-allowed;
+}
+
+.btn:hover:not(:disabled) {
+    background: #005bb5;
+}
