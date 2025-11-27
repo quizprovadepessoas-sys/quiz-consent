@@ -1,5 +1,5 @@
 // === LINK DO NOVO DEPLOY DO APPS SCRIPT ===
-const API_URL = "https://script.google.com/macros/s/AKfycbxrt-fcNdn9NOdo4gol34cxFVuPo28p9hSyLL7VnihUTzO0_G6p6RULE83s_E76aUMDeA/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbzsyMZELo6lzko2ljCmOtQD2_58VHeunIRmPEWr80xJ7R6akSFgqTJIMqyQJAsEbm0Z3g/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -43,6 +43,7 @@ async function continuar() {
     try {
         const response = await fetch(API_URL, {
             method: "POST",
+            mode: "cors",  // IMPORTANTE para GitHub Pages
             headers: {
                 "Content-Type": "application/json"
             },
